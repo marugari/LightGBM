@@ -45,6 +45,8 @@ std::string GetBoostingType(const std::unordered_map<std::string, std::string>& 
       boosting_type = "goss";
     } else if (value == std::string("rf") || value == std::string("randomforest")) {
       boosting_type = "rf";
+    } else if (value == std::string("fast_multi")) {
+      boosting_type = "fast_multi";
     } else {
       Log::Fatal("Unknown boosting type %s", value.c_str());
     }
@@ -412,6 +414,7 @@ void BoostingConfig::Set(const std::unordered_map<std::string, std::string>& par
   GetDouble(params, "top_rate", &top_rate);
   GetDouble(params, "other_rate", &other_rate);
   GetBool(params, "boost_from_average", &boost_from_average);
+  GetInt(params, "num_class_train", &num_class_train);
   CHECK(drop_rate <= 1.0 && drop_rate >= 0.0);
   CHECK(skip_drop <= 1.0 && skip_drop >= 0.0);
   device_type = GetDeviceType(params);

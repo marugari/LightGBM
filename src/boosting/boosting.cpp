@@ -3,6 +3,7 @@
 #include "dart.hpp"
 #include "goss.hpp"
 #include "rf.hpp"
+#include "fast_multi.hpp"
 
 namespace LightGBM {
 
@@ -36,6 +37,8 @@ Boosting* Boosting::CreateBoosting(const std::string& type, const char* filename
       return new GOSS();
     } else if (type == std::string("rf")) {
       return new RF();
+    } else if (type == std::string("fast_multi")) {
+      return new Fast_Multi();
     } else {
       return nullptr;
     }
@@ -50,7 +53,9 @@ Boosting* Boosting::CreateBoosting(const std::string& type, const char* filename
       } else if (type == std::string("goss")) {
         ret.reset(new GOSS());
       } else if (type == std::string("rf")) {
-        return new RF();
+        ret.reset(new RF());
+      } else if (type == std::string("fast_multi")) {
+        ret.reset(new Fast_Multi());
       } else {
         Log::Fatal("unknown boosting type %s", type.c_str());
       }

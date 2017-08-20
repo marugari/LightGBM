@@ -258,6 +258,7 @@ public:
   std::string tree_learner_type = kDefaultTreeLearnerType;
   std::string device_type = kDefaultDevice;
   TreeConfig tree_config;
+  int num_class_train = 1;
   LIGHTGBM_EXPORT void Set(const std::unordered_map<std::string, std::string>& params) override;
 };
 
@@ -467,7 +468,8 @@ struct ParameterAlias {
       "max_conflict_rate", "poisson_max_delta_step", "gaussian_eta",
       "histogram_pool_size", "output_freq", "is_provide_training_metric", "machine_list_filename",
       "zero_as_missing", "max_cat_group", "max_cat_threshold", "cat_smooth_ratio", "min_cat_smooth", "max_cat_smooth",
-      "init_score_file", "valid_init_score_file", "is_predict_contrib"
+      "init_score_file", "valid_init_score_file", "is_predict_contrib",
+      "num_class_train"
     });
     std::unordered_map<std::string, std::string> tmp_map;
     for (const auto& pair : *params) {
