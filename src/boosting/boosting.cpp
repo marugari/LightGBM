@@ -37,6 +37,8 @@ Boosting* Boosting::CreateBoosting(const std::string& type, const char* filename
       return new GOSS();
     } else if (type == std::string("rf")) {
       return new RF();
+    } else if (type == std::string("part")) {
+      return new PART();
     } else {
       return nullptr;
     }
@@ -51,6 +53,8 @@ Boosting* Boosting::CreateBoosting(const std::string& type, const char* filename
         ret.reset(new GOSS());
       } else if (type == std::string("rf")) {
         return new RF();
+      } else if (type == std::string("part")) {
+        ret.reset(new PART());
       } else {
         Log::Fatal("unknown boosting type %s", type.c_str());
       }

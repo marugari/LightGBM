@@ -183,6 +183,7 @@ private:
       }
     }
   }
+protected:
   /*! \brief The weights of all trees, used to choose drop trees */
   std::vector<double> tree_weight_;
   /*! \brief sum weights of all trees */
