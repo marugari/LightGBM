@@ -4,6 +4,8 @@
 #include "goss.hpp"
 #include "rf.hpp"
 
+#include "part.hpp"
+
 namespace LightGBM {
 
 std::string GetBoostingTypeFromModelFile(const char* filename) {

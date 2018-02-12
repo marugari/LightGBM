@@ -118,7 +118,6 @@ private:
   *               -> shrink tree to 1 from lr / (1 + lr), by (1 + lr) / lr
   */
   bool Normalize() {
-    double k = static_cast<double>(drop_index_.size());
     for (auto i : drop_index_) {
       for (int cur_tree_id = 0; cur_tree_id < num_tree_per_iteration_; ++cur_tree_id) {
         auto curr_tree = i * num_tree_per_iteration_ + cur_tree_id;
@@ -133,7 +132,7 @@ private:
       }
     }
     double score = PeekScore();
-    Log::Info("current: %f\tnew: %f", cur_score_, peek_score_);
+    Log::Info("current: %f\tnew: %f", peeked_score_, score);
     bool is_improved = score > peeked_score_;
     if (is_improved) {
       for (auto i: drop_index_) {
