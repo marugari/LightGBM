@@ -36,7 +36,7 @@ public:
       return ret;
     }
     bool is_improved = Normalize();
-    if (is_improved) {
+    if (is_improved || models_.size() <= 1) {
       if (!gbdt_config_->uniform_drop) {
         tree_weight_.push_back(shrinkage_rate_);
         sum_weight_ += shrinkage_rate_;
